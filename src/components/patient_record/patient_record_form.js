@@ -3,8 +3,8 @@ import { Button, Container, Form, Row, Col } from 'react-bootstrap';
 
 const PatientRecord = () => {
     
-  const [patientName, setPatientName] = useState('')
-  const [patientDisease, setDiseaseName] = useState('')
+  // const [patientName, setPatientName] = useState('')
+  // const [patientDisease, setDiseaseName] = useState('')
 
   const handleSubmit = (e) => {
     e.preventDefault();

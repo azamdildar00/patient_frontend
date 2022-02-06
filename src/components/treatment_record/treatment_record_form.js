@@ -2,9 +2,9 @@ import React, {useState} from "react";
 import { Button, Container, Form, Row, Col } from 'react-bootstrap';
 
 const TreatmentRecord = () => {
-  const [patientName, setPatientName] = useState('')
-  const [treatDisease, setTreatName] = useState('')
-  const [check, setCheck] = useState(true);
+//   const [patientName, setPatientName] = useState('')
+//   const [treatDisease, setTreatName] = useState('')
+//   const [check, setCheck] = useState(true);
 
   const handleChange = (e) => {
     e.preventDefault();
