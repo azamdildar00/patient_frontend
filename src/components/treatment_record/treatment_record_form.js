@@ -28,8 +28,6 @@ const TreatmentRecord = () => {
 
   const handleSubmitSearch = (e) => {
     e.preventDefault();
-    console.log(e.target.elements.searchDisease.value);
-
     axios
       .get(
         `https://patient-backend111.herokuapp.com/treatment?type=${e.target.elements.searchDisease.value}`
@@ -40,9 +38,6 @@ const TreatmentRecord = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target.elements.patientName.value);
-    console.log(e.target.elements.patientDisease.value);
-
     const treatment = {
       patient_name: e.target.elements.patientName.value,
       disease: e.target.elements.patientDisease.value,
@@ -144,6 +139,7 @@ const TreatmentRecord = () => {
                 <th>#</th>
                 <th>Patient Name</th>
                 <th>Treatment Name</th>
+                <th>Prescription</th>
               </tr>
             </thead>
             <tbody>
@@ -153,6 +149,9 @@ const TreatmentRecord = () => {
                     <td>{r.id}</td>
                     <td>{r.patient_name}</td>
                     <td>{r.disease}</td>
+                    <td style={{ color: r.prescription ? "green" : "purple" }}>
+                      {r.prescription ? "Issued" : "Not Issued"}
+                    </td>
                   </tr>
                 );
               })}

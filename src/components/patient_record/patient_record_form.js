@@ -141,6 +141,7 @@ const PatientRecord = () => {
                     <td
                       style={{
                         color: r.disease === "Allergie" ? "red" : "blue",
+                        fontSize: "bold",
                       }}
                     >
                       {r.disease}
