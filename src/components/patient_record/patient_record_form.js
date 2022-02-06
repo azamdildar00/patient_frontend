@@ -1,10 +1,27 @@
-import React from "react";
+import React, {useState} from "react";
 import { Button, Container, Form, Row, Col } from 'react-bootstrap';
 
 const PatientRecord = () => {
     
   // const [patientName, setPatientName] = useState('')
   // const [patientDisease, setDiseaseName] = useState('')
+  const [searchPatient, setSearchPatient] = useState(false)
+  const [addPatient, setAddPatient] = useState(false)
+
+  const searchBtn = () => {
+    setSearchPatient(true)
+    setAddPatient(false)
+  }
+
+  const addBtn = () => {
+    setSearchPatient(false)
+    setAddPatient(true)
+  }
+
+  const handleSubmitSearch = (e) => {
+    e.preventDefault();
+    console.log(e.target.elements.searchPatient.value);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,6 +32,33 @@ const PatientRecord = () => {
   }
 
     return (
+      <>
+        <Container>
+            <Row className="mt-5">
+                <Col lg={5} md={6} sm={12} className="p-5 m-auto shadow-sm rounded-lg">
+                    <Button variant="primary" onClick={searchBtn}>Search Search</Button>{' '}
+                    <Button variant="primary" onClick={addBtn}>Add Patient</Button>
+                </Col>
+            </Row>
+        </Container>
+        {searchPatient && 
+            <Container>
+                <Row className="mt-5">
+                    <Col lg={5} md={6} sm={12} className="p-5 m-auto shadow-sm rounded-lg">
+                    <Form onSubmit={handleSubmitSearch}>
+                    <Form.Group className="mb-3" controlId='searchPatient'>
+                        <Form.Label>Search Patient</Form.Label>
+                            <Form.Control type="text" placeholder="Patient Name"/>
+                        </Form.Group>
+                        <Button variant="primary" type="submit" >
+                            Search
+                        </Button>
+                    </Form>
+                    </Col>
+                </Row>
+            </Container>
+        }
+        {addPatient && 
         <Container>
         <Row className="mt-5">
           <Col lg={5} md={6} sm={12} className="p-5 m-auto shadow-sm rounded-lg">
@@ -37,6 +81,8 @@ const PatientRecord = () => {
           </Col>
         </Row>
       </Container>
+        }
+      </>
     )
 }
 
