@@ -34,7 +34,7 @@ const TreatmentRecord = () => {
                 <Form.Control type="text" placeholder="Disease Name"/>
               </Form.Group>
 
-              <Form.Select aria-label="Default select example" onChange={handleChange}>
+              <Form.Select className="mb-3" aria-label="Default select example" onChange={handleChange}>
                 <option>Prescription issue or not</option>
                 <option value="1">Yes</option>
                 <option value="2">No</option>
