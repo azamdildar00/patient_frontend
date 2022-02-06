@@ -3,8 +3,6 @@ import axios from "axios";
 import { Button, Container, Form, Row, Col, Table } from "react-bootstrap";
 
 const TreatmentRecord = () => {
-  // const [patientName, setPatientName] = useState('')
-  // const [treatDisease, setTreatName] = useState('')
   const [treatRecord, setTreatRecord] = useState();
 
   const [check, setCheck] = useState(true);

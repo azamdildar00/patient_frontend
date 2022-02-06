@@ -11,8 +11,6 @@ import {
 } from "react-bootstrap";
 
 const PatientRecord = () => {
-  // const [patientName, setPatientName] = useState('')
-  // const [patientDisease, setDiseaseName] = useState('')
   const [isLoading, setIsLoading] = useState(false);
   const [searchPatient, setSearchPatient] = useState(false);
   const [addPatient, setAddPatient] = useState(false);
@@ -140,7 +138,13 @@ const PatientRecord = () => {
                   <tr>
                     <td>{r.id}</td>
                     <td>{r.name}</td>
-                    <td>{r.disease}</td>
+                    <td
+                      style={{
+                        color: r.disease === "Allergie" ? "red" : "blue",
+                      }}
+                    >
+                      {r.disease}
+                    </td>
                   </tr>
                 );
               })}
