@@ -1,16 +1,23 @@
 import React, {useState} from "react";
+import axios from "axios";
 import { Button, Container, Form, Row, Col } from 'react-bootstrap';
 
 const TreatmentRecord = () => {
 //   const [patientName, setPatientName] = useState('')
 //   const [treatDisease, setTreatName] = useState('')
-//   const [check, setCheck] = useState(true);
+    // const [treatRecord, setTreatRecord] = useState('')
+
+  const [check, setCheck] = useState(true);
   const [searchtreat, setSearchTreat] = useState(false)
   const [addtreat, setAddTreat] = useState(false)
 
   const handleChange = (e) => {
     e.preventDefault();
     console.log(e.target.value)
+    if(e.target.value === "1")
+        setCheck(true)
+    else
+        setCheck(false)
   }
 
   const searchBtn = () => {
@@ -26,13 +33,27 @@ const TreatmentRecord = () => {
   const handleSubmitSearch = (e) => {
       e.preventDefault();
       console.log(e.target.elements.searchDisease.value);
+
+      axios.get(`https://patient-backend111.herokuapp.com/treatment?type=${e.target.elements.searchDisease.value}`)
+        .then(res => {
+            console.log(res.data)
+            // setTreatRecord(res.data);
+        })
   }
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(e.target.elements.patientName.value);
     console.log(e.target.elements.patientDisease.value);
-    console.log(e.target.elements.Prescription.value);
-  }
+
+    const treatment = {
+        patient_name : e.target.elements.patientName.value,
+        disease : e.target.elements.patientDisease.value,
+        prescription : check
+      }
+  
+      axios.post('https://patient-backend111.herokuapp.com/treatment', {treatment})
+        .then(res => console.log(res.data));
+    }
 
     return (
         <>

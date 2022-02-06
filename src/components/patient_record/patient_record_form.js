@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import axios from "axios";
 import { Button, Container, Form, Row, Col } from 'react-bootstrap';
 
 const PatientRecord = () => {
@@ -7,6 +8,8 @@ const PatientRecord = () => {
   // const [patientDisease, setDiseaseName] = useState('')
   const [searchPatient, setSearchPatient] = useState(false)
   const [addPatient, setAddPatient] = useState(false)
+
+
 
   const searchBtn = () => {
     setSearchPatient(true)
@@ -21,12 +24,24 @@ const PatientRecord = () => {
   const handleSubmitSearch = (e) => {
     e.preventDefault();
     console.log(e.target.elements.searchPatient.value);
+
+    axios.get(`https://patient-backend111.herokuapp.com/patient?name=${e.target.elements.searchPatient.value}`)
+      .then(res => console.log(res.data))
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(e.target.elements.patientName.value);
     console.log(e.target.elements.patientDisease.value);
+
+    const patient = {
+      name : e.target.elements.patientName.value,
+      disease : e.target.elements.patientDisease.value
+    }
+
+    axios.post('https://patient-backend111.herokuapp.com/patient', {patient})
+      .then(res => console.log(res));
+
     // console.log(patientName);
     // console.log(patientDisease);
   }
