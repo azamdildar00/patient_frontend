@@ -40,10 +40,9 @@ const TreatmentRecord = () => {
               </Form.Group>
 
               <Form.Select aria-label="Default select example" onChange={handleChange}>
-                <option>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option>Prescription issue or not</option>
+                <option value="1">Yes</option>
+                <option value="2">No</option>
             </Form.Select>
 
               <Button variant="primary" type="submit" >
